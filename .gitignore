@@ -23,4 +23,4 @@ frontend/.env
 
 # Logs
 *.log
-backend/src/main/resources/application-prod.properties
+
