@@ -1,0 +1,277 @@
+.about-page{
+  background:#F8FAFC;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.about-hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  padding:80px 0;
+}
+
+.about-tag{
+  display:inline-block;
+  background:#DBEAFE;
+  color:#2563EB;
+  padding:10px 20px;
+  border-radius:50px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:2px;
+  margin-bottom:22px;
+}
+
+.about-title{
+  font-weight:800 !important;
+  color:#111827;
+  line-height:1.15 !important;
+  margin-bottom:25px !important;
+}
+
+.about-subtitle{
+  font-size:18px !important;
+  line-height:1.9 !important;
+  color:#64748B;
+  max-width:550px;
+  margin-bottom:40px !important;
+}
+
+.shop-btn{
+  padding:14px 36px !important;
+  border-radius:14px !important;
+  font-size:16px !important;
+  text-transform:none !important;
+  font-weight:700 !important;
+}
+
+/* BIG IMAGE */
+
+.about-image{
+  width:60%;
+  height:700px;
+  object-fit:cover;
+  border-radius:30px;
+  box-shadow:0 30px 70px rgba(0,0,0,.18);
+  transition:.4s;
+}
+
+.about-image:hover{
+  transform:scale(1.02);
+}
+
+/* =========================================
+   MISSION
+========================================= */
+
+.mission-section{
+  padding:110px 0;
+  background:linear-gradient(135deg,#2563EB,#1D4ED8);
+}
+
+.mission-section .section-title{
+  color:white;
+  font-weight:800 !important;
+  margin-bottom:30px !important;
+}
+
+.mission-text{
+  color:#E2E8F0;
+  font-size:19px !important;
+  line-height:2 !important;
+  max-width:760px;
+  margin:auto;
+}
+
+/* =========================================
+   WHY FITMART
+========================================= */
+
+/* WHY SECTION */
+
+.why-fitmart{
+
+padding:100px 0;
+
+background:#F8FAFC;
+
+}
+
+.why-card{
+
+background:white;
+
+padding:35px;
+
+border-radius:22px;
+
+height:100%;
+
+text-align:center;
+
+box-shadow:0 12px 30px rgba(0,0,0,.06);
+
+transition:.35s;
+
+}
+
+.why-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 22px 45px rgba(37,99,235,.15);
+
+}
+
+.why-icon{
+
+width:75px;
+
+height:75px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#EFF6FF;
+
+font-size:34px;
+
+margin-bottom:15px;
+
+}
+
+.why-image{
+
+width:100%;
+
+height:650px;
+
+object-fit:cover;
+
+border-radius:30px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+transition:.4s;
+
+}
+
+.why-image:hover{
+
+transform:scale(1.02);
+
+}
+
+@media(max-width:900px){
+
+.why-image{
+
+margin-top:40px;
+
+height:420px;
+
+}
+
+}
+/* =========================================
+   CTA
+========================================= */
+
+.about-cta{
+  padding:110px 0;
+  text-align:center;
+  background:linear-gradient(135deg,#2563EB,#3B82F6);
+  color:white;
+}
+
+.about-cta h3{
+  font-weight:800 !important;
+}
+
+.about-cta button{
+  padding:14px 36px !important;
+  border-radius:14px !important;
+  text-transform:none !important;
+  font-size:16px !important;
+  font-weight:700 !important;
+  background:white !important;
+  color:#2563EB !important;
+}
+
+.about-cta button:hover{
+  background:#F1F5F9 !important;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px){
+
+.about-hero{
+  min-height:auto;
+  text-align:center;
+  padding:70px 0;
+}
+
+.about-title{
+  font-size:2.7rem !important;
+}
+
+.about-subtitle{
+  margin:auto auto 35px !important;
+}
+
+.about-image{
+  height:480px;
+  margin-top:40px;
+}
+
+.mission-section,
+.why-fitmart,
+.about-cta{
+  padding:80px 0;
+}
+
+}
+
+@media(max-width:600px){
+
+.about-title{
+  font-size:2rem !important;
+}
+
+.about-subtitle,
+.mission-text{
+  font-size:16px !important;
+}
+
+.about-image{
+  height:340px;
+}
+
+.shop-btn{
+  width:100%;
+}
+
+.why-card{
+  padding:35px 20px;
+}
+
+.why-icon{
+  width:75px;
+  height:75px;
+  font-size:34px;
+}
+
+}

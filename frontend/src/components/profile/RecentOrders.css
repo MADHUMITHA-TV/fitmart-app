@@ -1,0 +1,35 @@
+.recent-orders-card{
+
+margin-top:35px;
+
+border-radius:22px !important;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06)!important;
+
+}
+
+.order-item{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+padding:22px 0;
+
+transition:.3s;
+
+}
+
+.order-item:hover{
+
+transform:translateX(5px);
+
+}
+
+.order-item:last-child{
+
+padding-bottom:0;
+
+}

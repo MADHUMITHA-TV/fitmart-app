@@ -1,0 +1,35 @@
+.wishlist-card{
+
+margin-top:35px;
+
+border-radius:22px !important;
+
+box-shadow:0 10px 30px rgba(0,0,0,.06)!important;
+
+}
+
+.wish-product{
+
+border-radius:18px !important;
+
+transition:.35s;
+
+overflow:hidden;
+
+height:100%;
+
+}
+
+.wish-product:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 18px 35px rgba(37,99,235,.18);
+
+}
+
+.wish-product img{
+
+object-fit:cover;
+
+}

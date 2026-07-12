@@ -1,0 +1,160 @@
+/* Navbar */
+
+.navbar{
+
+    background:linear-gradient(
+    135deg,
+    #38BDF8
+    #2563EB,
+    
+  );
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08) !important;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+}
+
+/* Toolbar */
+
+.toolbar{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    height:80px;
+
+    gap:30px;
+}
+
+/* Logo */
+
+.logo{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:2rem !important;
+
+    font-weight:800 !important;
+
+    letter-spacing:.8px;
+
+    transition:.3s;
+}
+
+.logo:hover{
+
+    color:#38BDF8;
+
+}
+
+/* Desktop Links */
+
+.desktop-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+.desktop-links button{
+
+    color:white;
+
+    text-transform:none;
+
+    font-weight:600;
+
+    font-size:15px;
+
+    border-radius:12px;
+
+    padding:8px 18px;
+
+    transition:.3s;
+}
+
+.desktop-links button:hover{
+
+    background:rgba(255,255,255,.08);
+
+    color:#38BDF8;
+
+}
+
+/* Right Icons */
+
+.nav-icons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.nav-icons .MuiIconButton-root{
+
+    color:white;
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    transition:.3s;
+}
+
+.nav-icons .MuiIconButton-root:hover{
+
+    background:#2563EB;
+
+    transform:translateY(-2px);
+}
+
+/* Badge */
+
+.MuiBadge-badge{
+
+    font-size:11px !important;
+
+    font-weight:700;
+
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+.toolbar{
+
+height:72px;
+
+}
+
+.desktop-links{
+
+display:none !important;
+
+}
+
+.logo{
+
+font-size:1.6rem !important;
+
+}
+
+}

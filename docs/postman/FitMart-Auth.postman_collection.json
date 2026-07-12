@@ -1,0 +1,428 @@
+{
+  "info": {
+    "_postman_id": "fitmart-auth-collection",
+    "name": "FitMart - Authentication APIs",
+    "description": "Postman collection for FitMart JWT authentication endpoints.\n\n## Setup\n1. Import this collection into Postman.\n2. Ensure the backend is running on `http://localhost:8080`.\n3. Run **Register User** or **Login User** — the JWT is saved automatically to the `accessToken` collection variable.\n\n## Endpoints\n| Method | Path | Description |\n|--------|------|-------------|\n| POST | `/api/auth/register` | Create a new user account (ROLE_USER) |\n| POST | `/api/auth/login` | Authenticate and receive a JWT |\n\n## Response Envelope\nAll responses use:\n```json\n{\n  \"success\": true,\n  \"message\": \"...\",\n  \"data\": { \"token\": \"...\", \"tokenType\": \"Bearer\", \"user\": { ... } }\n}\n```",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "accessToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "user@fitmart.com",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "password123",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Register User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 201 Created', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test('Response has success flag', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.success).to.eql(true);",
+              "});",
+              "",
+              "pm.test('Response contains JWT token', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.data).to.have.property('token');",
+              "    pm.expect(json.data.tokenType).to.eql('Bearer');",
+              "    pm.collectionVariables.set('accessToken', json.data.token);",
+              "});",
+              "",
+              "pm.test('User has ROLE_USER', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.data.user.roles).to.include('ROLE_USER');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phone\": \"555-0100\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        },
+        "description": "Registers a new FitMart user account.\n\n**Access:** Public (no JWT required)\n\n**Default role:** `ROLE_USER`\n\n**Validation rules:**\n- `email` — required, valid email format\n- `password` — required, minimum 6 characters\n- `firstName` — required, max 100 characters\n- `lastName` — required, max 100 characters\n- `phone` — optional, max 20 characters\n\n**Success:** `201 Created`\n\n**Errors:**\n- `400` — validation failure or email already registered"
+      },
+      "response": [
+        {
+          "name": "201 - Registration Successful",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@fitmart.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"phone\": \"555-0100\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Registration successful\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9...\",\n    \"tokenType\": \"Bearer\",\n    \"user\": {\n      \"id\": 1,\n      \"email\": \"user@fitmart.com\",\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"555-0100\",\n      \"roles\": [\"ROLE_USER\"]\n    }\n  }\n}"
+        },
+        {
+          "name": "400 - Email Already Registered",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@fitmart.com\",\n  \"password\": \"password123\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Email is already registered\",\n  \"data\": null\n}"
+        },
+        {
+          "name": "400 - Validation Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"invalid-email\",\n  \"password\": \"123\",\n  \"firstName\": \"\",\n  \"lastName\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Invalid email format, Password must be at least 6 characters, First name is required, Last name is required\",\n  \"data\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "Login User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status code is 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response has success flag', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.success).to.eql(true);",
+              "});",
+              "",
+              "pm.test('Response contains JWT token', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.data).to.have.property('token');",
+              "    pm.expect(json.data.tokenType).to.eql('Bearer');",
+              "    pm.collectionVariables.set('accessToken', json.data.token);",
+              "});",
+              "",
+              "pm.test('User profile is returned', function () {",
+              "    const json = pm.response.json();",
+              "    pm.expect(json.data.user).to.have.property('email');",
+              "    pm.expect(json.data.user).to.have.property('roles');",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "description": "Authenticates a user and returns a JWT Bearer token.\n\n**Access:** Public (no JWT required)\n\n**Validation rules:**\n- `email` — required, valid email format\n- `password` — required\n\n**Success:** `200 OK`\n\n**Errors:**\n- `400` — validation failure\n- `401` — invalid email or password"
+      },
+      "response": [
+        {
+          "name": "200 - Login Successful",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@fitmart.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": true,\n  \"message\": \"Login successful\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9...\",\n    \"tokenType\": \"Bearer\",\n    \"user\": {\n      \"id\": 1,\n      \"email\": \"user@fitmart.com\",\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"phone\": \"555-0100\",\n      \"roles\": [\"ROLE_USER\"]\n    }\n  }\n}"
+        },
+        {
+          "name": "401 - Invalid Credentials",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@fitmart.com\",\n  \"password\": \"wrongpassword\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Invalid email or password\",\n  \"data\": null\n}"
+        },
+        {
+          "name": "400 - Validation Error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"\",\n  \"password\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Email is required, Password is required\",\n  \"data\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "Verify JWT (Protected Route Test)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('JWT is accepted (not 401)', function () {",
+              "    pm.expect(pm.response.code).to.not.eql(401);",
+              "});",
+              "",
+              "if (pm.response.code === 401) {",
+              "    pm.test('401 means token is missing or invalid', function () {",
+              "        const json = pm.response.json();",
+              "        pm.expect(json.success).to.eql(false);",
+              "    });",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "if (!pm.collectionVariables.get('accessToken')) {",
+              "    console.warn('No accessToken set. Run Register or Login first.');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{accessToken}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/me",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "users", "me"]
+        },
+        "description": "Optional helper request to verify that a saved JWT works on a protected route.\n\n**Note:** This endpoint will return `404` until the User profile module is implemented. A `401` means the token is missing or invalid; any other status confirms the JWT was accepted by Spring Security.\n\nRun **Register User** or **Login User** first — the token is auto-saved to `{{accessToken}}`."
+      },
+      "response": [
+        {
+          "name": "401 - Missing or Invalid Token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "me"]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"success\": false,\n  \"message\": \"Unauthorized: authentication required\",\n  \"data\": null\n}"
+        }
+      ]
+    }
+  ]
+}

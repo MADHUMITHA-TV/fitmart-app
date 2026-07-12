@@ -1,0 +1,36 @@
+.order-card{
+    margin-bottom:30px;
+    border-radius:18px;
+    transition:.3s;
+}
+
+.order-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.order-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.order-item{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin:18px 0;
+}
+
+.order-image{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.order-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}

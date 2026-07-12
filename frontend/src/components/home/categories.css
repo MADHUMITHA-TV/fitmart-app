@@ -1,0 +1,262 @@
+/* ===========================
+   SECTION
+=========================== */
+
+.categories-section {
+  padding: 90px 0;
+  background: linear-gradient(
+    180deg,
+    #f8fbff 0%,
+    #eef5ff 100%
+  );
+}
+
+.categories-heading {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.category-title {
+  font-weight: 800 !important;
+  color: #111827;
+  margin-bottom: 12px !important;
+}
+
+.category-subtitle {
+  max-width: 720px;
+  margin: auto;
+  color: #6b7280;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.fitness-category-card {
+  height: 100%;
+  border-radius: 28px !important;
+  overflow: hidden;
+  cursor: pointer;
+
+  border: 1px solid #e5e7eb;
+
+  transition: all .35s ease !important;
+
+  box-shadow:
+      0 12px 35px rgba(0,0,0,.06) !important;
+
+  background: white !important;
+}
+
+.fitness-category-card:hover {
+
+  transform: translateY(-10px);
+
+  box-shadow:
+      0 28px 60px rgba(37,99,235,.18) !important;
+
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.category-image-wrapper {
+
+  position: relative;
+
+  height: 240px;
+
+  overflow: hidden;
+
+}
+
+.category-image {
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform .55s ease;
+
+}
+
+.fitness-category-card:hover .category-image {
+
+  transform: scale(1.08);
+
+}
+
+/* Dark overlay */
+
+.image-overlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+      linear-gradient(
+      to top,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.08)
+      );
+
+}
+
+/* ===========================
+   CONTENT
+=========================== */
+
+.category-content {
+
+  padding: 28px !important;
+
+}
+
+.category-content h5 {
+
+  font-weight: 700;
+
+  margin-bottom: 10px;
+
+}
+
+.category-desc {
+
+  color: #6b7280;
+
+  line-height: 1.7;
+
+  min-height: 50px;
+
+  margin-bottom: 22px !important;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.shop-btn {
+
+  text-transform: none !important;
+
+  font-weight: 700 !important;
+
+  border-radius: 12px !important;
+
+  padding: 10px 0 !important;
+
+  color: #2563eb !important;
+
+  transition: .3s !important;
+
+}
+
+.shop-btn:hover {
+
+  background: transparent !important;
+
+  transform: translateX(6px);
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:1200px){
+
+.category-image-wrapper{
+
+height:220px;
+
+}
+
+}
+
+@media (max-width:900px){
+
+.categories-section{
+
+padding:70px 0;
+
+}
+
+.category-image-wrapper{
+
+height:200px;
+
+}
+
+.category-content{
+
+padding:22px !important;
+
+}
+
+}
+
+@media (max-width:600px){
+
+.categories-heading{
+
+margin-bottom:40px;
+
+}
+
+.category-title{
+
+font-size:2rem !important;
+
+}
+
+.category-subtitle{
+
+font-size:.95rem;
+
+padding:0 15px;
+
+}
+
+.category-image-wrapper{
+
+height:180px;
+
+}
+
+}
+.category-overlay-content{
+    position:absolute;
+    bottom:24px;
+    left:24px;
+    right:24px;
+    color:white;
+    z-index:5;
+}
+
+.overlay-title{
+    font-weight:800 !important;
+    margin-bottom:6px !important;
+}
+
+.overlay-subtitle{
+    color:rgba(255,255,255,.9);
+}
+.shop-btn{
+    border-radius:14px !important;
+    padding:12px !important;
+    text-transform:none !important;
+    font-weight:700 !important;
+    background:linear-gradient(135deg,#0c0c0d,#3B82F6) !important;
+    box-shadow:0 10px 25px rgba(37,99,235,.30);
+}
+
+.shop-btn:hover{
+    transform:translateY(-2px);
+}

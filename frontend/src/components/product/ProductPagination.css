@@ -1,0 +1,41 @@
+.pagination-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:55px;
+
+    margin-bottom:20px;
+
+}
+
+.pagination-wrapper .MuiPaginationItem-root{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+.pagination-wrapper .MuiPaginationItem-root:hover{
+
+    background:#EFF6FF;
+
+}
+
+.pagination-wrapper .Mui-selected{
+
+    background:#2563EB !important;
+
+    color:white !important;
+
+    box-shadow:0 10px 20px rgba(37,99,235,.3);
+
+}

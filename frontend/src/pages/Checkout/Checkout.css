@@ -1,0 +1,152 @@
+.checkout-page {
+  margin-top: 90px;
+  padding: 40px 0 70px;
+  min-height: 100vh;
+
+  background: linear-gradient(
+    180deg,
+    #f8faff 0%,
+    #f3f5fb 100%
+  );
+}
+
+/* Card */
+
+.checkout-card {
+  padding: 30px;
+  border-radius: 20px !important;
+
+  border: 1px solid #ececec;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .05) !important;
+
+  transition: .3s;
+
+  animation: slideUp .4s ease;
+}
+
+.checkout-card:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 18px 45px rgba(0,0,0,.08) !important;
+
+}
+
+/* Icon */
+
+.checkout-icon {
+
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-right: 18px;
+
+  background: #e8f0fe;
+
+}
+
+/* Button */
+
+.place-order-btn {
+
+  margin-top: 24px !important;
+
+  height: 58px;
+
+  border-radius: 14px !important;
+
+  text-transform: none !important;
+
+  font-size: 18px !important;
+
+  font-weight: 700 !important;
+
+  background: linear-gradient(
+    135deg,
+    #1565c0,
+    #42a5f5
+  ) !important;
+
+  box-shadow:
+      0 14px 28px rgba(21,101,192,.30) !important;
+
+  transition: .3s !important;
+
+}
+
+.place-order-btn:hover {
+
+  transform: translateY(-2px);
+
+}
+
+/* Trust Card */
+
+.trust-card {
+
+  margin-top: 20px;
+
+  padding: 20px;
+
+  display: flex;
+
+  gap: 16px;
+
+  align-items: center;
+
+  border-radius: 16px !important;
+
+  box-shadow:
+      0 8px 25px rgba(0,0,0,.04) !important;
+
+}
+
+/* Animation */
+
+@keyframes slideUp {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+  .checkout-page {
+
+    padding: 20px 0 50px;
+
+  }
+
+  .checkout-card {
+
+    padding: 20px;
+
+  }
+
+}

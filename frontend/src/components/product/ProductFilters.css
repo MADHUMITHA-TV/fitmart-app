@@ -1,0 +1,113 @@
+.filter-card{
+
+    position:sticky;
+
+    top:100px;
+
+    border-radius:22px !important;
+
+    padding:28px;
+
+    background:#ffffff;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 12px 30px rgba(15,23,42,.06);
+
+}
+
+/* HEADER */
+
+.filter-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:15px;
+
+}
+
+/* SECTIONS */
+
+.filter-section{
+
+    margin-top:10px;
+
+}
+
+.filter-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:15px;
+
+    color:#2563EB;
+
+}
+
+/* CATEGORY */
+
+.MuiFormControlLabel-root{
+
+    margin-bottom:6px !important;
+
+}
+
+.MuiTypography-root{
+
+    font-size:.95rem;
+
+}
+
+/* RADIO */
+
+.MuiRadio-root{
+
+    color:#94A3B8 !important;
+
+}
+
+.Mui-checked{
+
+    color:#2563EB !important;
+
+}
+
+/* SLIDER */
+
+.MuiSlider-root{
+
+    margin-top:20px;
+
+}
+
+/* CHIPS */
+
+.MuiChip-root{
+
+    border-radius:10px !important;
+
+    font-weight:700;
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.filter-card{
+
+position:static;
+
+margin-bottom:25px;
+
+}
+
+}

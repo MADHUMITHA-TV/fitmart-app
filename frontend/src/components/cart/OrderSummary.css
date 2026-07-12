@@ -1,0 +1,21 @@
+.summary-card{
+
+position:sticky;
+
+top:100px;
+
+border-radius:18px !important;
+
+}
+
+.summary-row{
+
+display:flex;
+
+justify-content:space-between;
+
+margin:15px 0;
+
+font-size:16px;
+
+}
